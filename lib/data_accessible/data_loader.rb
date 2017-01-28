@@ -12,7 +12,7 @@ module DataAccessible
     def load_from_file(file)
       contents = File.read(file)
       evaluated_contents = process_erb(contents)
-      YAML.safe_load(evaluated_contents) || {}
+      YAML.load(evaluated_contents) || {}
     end
 
     def load_source(data_source)
@@ -22,7 +22,7 @@ module DataAccessible
         when String
           load_from_file(data_source)
         when Symbol
-          load_from_file("data/#{data_source}.yml")
+          load_from_file("#{DataAccessible.data_path}/#{data_source}.yml")
         else
           raise("Invalid data source provided: #{data_source}")
       end

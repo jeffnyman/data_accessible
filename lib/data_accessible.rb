@@ -14,6 +14,19 @@ module DataAccessible
     klass
   end
 
+  def self.default_data_path
+    @data_path = 'data'
+  end
+
+  def self.data_path=(path)
+    @data_path = path
+  end
+
+  def self.data_path
+    return @data_path if @data_path
+    default_data_path
+  end
+
   module ClassMethods
     def data_load(data_source, namespace = nil)
       to_h.clear

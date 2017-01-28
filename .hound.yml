@@ -60,3 +60,8 @@ Metrics/MethodLength:
 # Encourage fewer parameters.
 Metrics/ParameterLists:
   Max: 4
+
+# Need to use load, rather than safe_load to support
+# symbol parsing.
+Security/YAMLLoad:
+  Enabled: false
