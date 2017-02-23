@@ -2,6 +2,10 @@ require "erb"
 require "yaml"
 
 module DataAccessible
+  def self.include_data(filename)
+    ERB.new(IO.read("#{filename}")).result
+  end
+
   module DataLoader
     module_function
 
